@@ -1,0 +1,50 @@
+---
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: "Collection Format Example"
+schemes:
+- "http"
+consumes:
+- "application/json"
+produces:
+- "application/json"
+paths:
+  /example:
+    get:
+      tags:
+      - "example"
+      description: "An example of different collection formats for lists"
+      operationId: "example_get"
+      parameters:
+      - name: "multi"
+        in: "query"
+        description: "A multi collection format list"
+        required: false
+        type: "array"
+        items:
+          type: "string"
+        collectionFormat: "multi"
+      - name: "csv"
+        in: "query"
+        description: "A csv collection format list"
+        required: false
+        type: "array"
+        items:
+          type: "string"
+        collectionFormat: "csv"
+      - name: "pipes"
+        in: "query"
+        description: "A pipes collection format list"
+        required: false
+        type: "array"
+        items:
+          type: "string"
+        collectionFormat: "pipes"
+      responses:
+        200:
+          description: "A dictionary of the input lists"
+          schema:
+            type: "string"
+      x-swagger-router-controller: "swagger_server.controllers.example_controller"
+definitions: {}
